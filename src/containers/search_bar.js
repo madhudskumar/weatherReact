@@ -9,12 +9,13 @@ export default class SearchBar extends Component {
         };
 
         this.onSearchChange = this.onSearchChange.bind(this)
+        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
     render(){
         return (
             <section id="search">
-                <form className="input-group">
+                <form onSubmit={this.onFormSubmit} className="input-group">
                     <input type="text"
                            className="form-control"
                            value={this.state.term}
@@ -30,5 +31,9 @@ export default class SearchBar extends Component {
 
     onSearchChange(event){
         super.setState({term:event.target.value})
+    }
+
+    onFormSubmit(event){
+        event.preventDefault();
     }
 }
